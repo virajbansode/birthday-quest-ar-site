@@ -1,0 +1,74 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>AR Birthday Reveal 🎈</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+  <script src="config.js"></script>
+  <!-- A-Frame & AR.js over CDN (marker-based) -->
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.min.js"></script>
+  <style> body{background:#000} .topbar{position:fixed;left:0;right:0;top:0;padding:8px 12px;color:#fff;z-index:9;text-align:center;opacity:.85} </style>
+</head>
+<body>
+  <div class="topbar">Give camera permission. Point at a <b>HIRO marker</b> (or your custom marker). Enjoy the 3D greeting! ✨</div>
+  <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+    <a-entity camera></a-entity>
+    <!-- Marker selection logic inserted by script below -->
+  </a-scene>
+
+  <script>
+    const cfg = window.QUEST_CONFIG || {}; const ar = cfg.ar || {}; const name = (cfg.herName||'Star');
+    const scene = document.querySelector('a-scene');
+    const textColor = ar.colors?.text || '#FF69B4';
+    const shape1 = ar.colors?.shape1 || '#FFD166';
+    const shape2 = ar.colors?.shape2 || '#9b5de5';
+    const msg = (ar.text||'Happy Birthday, <NAME>!').replace('<NAME>', name);
+
+    const marker = document.createElement('a-marker');
+    if(ar.useHiro !== false){ marker.setAttribute('preset','hiro'); }
+    else {
+      marker.setAttribute('type','pattern');
+      marker.setAttribute('url', ar.patternUrl||'');
+      marker.setAttribute('size', ar.markerSize||0.8);
+    }
+
+    const root = document.createElement('a-entity');
+    root.setAttribute('position','0 0 0');
+
+    const text = document.createElement('a-text');
+    text.setAttribute('value', msg);
+    text.setAttribute('color', textColor);
+    text.setAttribute('align','center');
+    text.setAttribute('position','0 1.1 0');
+    text.setAttribute('scale','2 2 2');
+
+    const shape = document.createElement('a-entity');
+    shape.setAttribute('geometry','primitive: torusKnot; radius:0.4; radiusTubular:0.12');
+    shape.setAttribute('material',`color: ${shape1}; metalness:0.2; roughness:0.3`);
+    shape.setAttribute('rotation','0 0 0');
+    shape.setAttribute('position','0 0.4 0');
+    shape.setAttribute('animation','property: rotation; to: 0 360 0; loop: true; dur: 4000; easing: linear');
+
+    const left = document.createElement('a-entity');
+    left.setAttribute('geometry','primitive: sphere; radius: 0.18');
+    left.setAttribute('material',`color: ${shape2}`);
+    left.setAttribute('position','-0.7 0.3 0');
+    left.setAttribute('animation','property: position; to: -0.7 0.9 0; dir: alternate; dur: 900; loop: true');
+
+    const right = document.createElement('a-entity');
+    right.setAttribute('geometry','primitive: sphere; radius: 0.18');
+    right.setAttribute('material','color: #6ef7ff');
+    right.setAttribute('position','0.7 0.3 0');
+    right.setAttribute('animation','property: position; to: 0.7 0.9 0; dir: alternate; dur: 900; loop: true');
+
+    root.appendChild(text); root.appendChild(shape); root.appendChild(left); root.appendChild(right);
+    marker.appendChild(root); scene.appendChild(marker);
+  </script>
+</body>
+</html>

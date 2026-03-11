@@ -1,0 +1,51 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Quest Steps 🧩</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <script src="config.js"></script>
+</head>
+<body>
+  <header class="header">
+    <h1>Quest Time, <span id="herName">Star</span> ✨</h1>
+    <p class="caption">Solve the clue, type your answer, and hit enter.</p>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <div class="flex" style="justify-content:space-between">
+        <div class="badge" id="stepBadge">Step 1</div>
+        <a href="index.html" class="button ghost">Home</a>
+      </div>
+      <h2 id="stepTitle">Loading…</h2>
+      <p id="clue">Please wait</p>
+      <div class="hint" id="hint" style="display:none"></div>
+      <div class="row" style="margin-top:10px">
+        <div class="col">
+          <input id="answer" class="input" type="text" placeholder="Type your answer…"/>
+        </div>
+        <div class="col" style="max-width:200px">
+          <button id="submitBtn" class="button" style="width:100%">Submit</button>
+        </div>
+      </div>
+      <div class="nav" style="margin-top:10px">
+        <button id="hintBtn" class="button secondary">Show Hint</button>
+        <button id="skipBtn" class="button ghost">Use QR to Jump</button>
+      </div>
+      <div id="feedback" class="caption" style="margin-top:10px"></div>
+      <div id="progress" aria-label="progress bar"><div></div></div>
+    </section>
+  </main>
+
+  <footer class="footer">You’ve got this 💪</footer>
+
+  <script src="scripts/quest.js"></script>
+</body>
+</html>

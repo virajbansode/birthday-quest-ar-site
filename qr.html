@@ -1,0 +1,36 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Print QR Clues 🧭</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+  <script src="config.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>@media print{ .no-print{display:none} .qr-grid{grid-template-columns:repeat(2,1fr)} body{background:#fff} }</style>
+</head>
+<body>
+  <header class="header">
+    <h1>QR Clue Cards</h1>
+    <p>Print and place these around the house. Each QR jumps to its step.</p>
+    <div class="nav no-print" style="margin-top:10px">
+      <button class="button" onclick="window.print()">Print</button>
+      <a href="index.html" class="button ghost">Back</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <div id="grid" class="qr-grid"></div>
+    </section>
+  </main>
+
+  <footer class="footer">Hide in creative places 😉</footer>
+
+  <script src="scripts/qr.js"></script>
+</body>
+</html>

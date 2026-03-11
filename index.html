@@ -1,0 +1,66 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Birthday Quest ✨</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+  <script src="config.js"></script>
+  <script>
+    (function(){
+      const t=(window.QUEST_CONFIG||{}).theme||{}; const r=document.documentElement.style;
+      if(t.primary) r.setProperty('--primary',t.primary);
+      if(t.secondary) r.setProperty('--secondary',t.secondary);
+      if(t.accent) r.setProperty('--accent',t.accent);
+      if(t.bgGradient) r.setProperty('--bgGradient',t.bgGradient);
+    })();
+  </script>
+</head>
+<body>
+  <header class="header">
+    <h1>Birthday Quest for <span id="herName">You</span> 🎀</h1>
+    <p>A colorful treasure hunt with puzzles, memories, and an AR surprise at the end.</p>
+    <div class="nav" style="margin-top:14px">
+      <a class="button ghost" href="qr.html">Print QR Clues</a>
+      <a class="button secondary" href="ar.html">AR Card</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card center">
+      <p>Clues unlock one by one. Solve them to move forward. You can scatter printed QR cards around the house, or play fully online.</p>
+      <div class="nav" style="margin-top:10px">
+        <a href="quest.html" class="button">Start the Quest</a>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3>How to play</h3>
+      <ol>
+        <li>Solve the clue on screen and type the answer.</li>
+        <li>If you’re doing a physical hunt, scan the QR at each location to jump to the next step.</li>
+        <li>Collect all answers to reach the grand AR reveal. 🎉</li>
+      </ol>
+      <div id="progress" aria-label="progress bar"><div></div></div>
+      <p class="caption">Your progress is saved locally on this device.</p>
+    </section>
+  </main>
+
+  <footer class="footer">Made with ❤️ by <span id="byName">Viraj</span></footer>
+
+  <script>
+    const cfg = window.QUEST_CONFIG||{};
+    document.getElementById('herName').textContent = cfg.herName || 'You';
+    // reflect saved progress on landing
+    try{
+      const steps = (cfg.steps||[]).length; const done = Number(localStorage.getItem('bquest.progress')||0);
+      const pct = Math.max(0,Math.min(100, Math.round((done/steps)*100)));
+      document.querySelector('#progress>div').style.width = pct + '%';
+    }catch(e){}
+  </script>
+</body>
+</html>

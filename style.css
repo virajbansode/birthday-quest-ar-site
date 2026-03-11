@@ -1,0 +1,29 @@
+
+:root{ --primary:#9b5de5; --secondary:#f15bb5; --accent:#fee440; --text:#222; }
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0; font-family:'Poppins',system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial; color:var(--text); background:#fff}
+.header{background:var(--bgGradient,linear-gradient(135deg,#f8d7ff 0%, #ffe4f3 100%)); padding:56px 20px 28px; text-align:center}
+.header h1{margin:0 0 8px; font-size:42px}
+.header p{margin:0; opacity:.9}
+.container{max-width:920px; margin:0 auto; padding:22px}
+.card{background:#fff; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,.08); padding:22px; margin:20px 0}
+.row{display:flex; flex-wrap:wrap; gap:24px}
+.col{flex:1 1 340px}
+.button{background:var(--primary); color:#fff; border:0; border-radius:12px; padding:12px 18px; font-weight:600; cursor:pointer; box-shadow:0 6px 16px rgba(0,0,0,.15)}
+.button.secondary{background:var(--secondary)}
+.button.ghost{background:#fff; color:#333; border:2px solid var(--primary)}
+.button:disabled{opacity:.6; cursor:not-allowed}
+.center{text-align:center}
+.caption{font-size:14px; opacity:.7}
+.input{padding:12px 14px; border-radius:10px; border:1px solid #ddd; width:100%; font-size:16px}
+.hint{background:#fffbea; border:1px solid #ffe58f; padding:10px 14px; border-radius:10px; margin-top:10px}
+.flex{display:flex; gap:10px; align-items:center}
+.footer{padding:36px 20px; text-align:center; opacity:.8}
+#progress{height:8px; background:#eee; border-radius:999px; overflow:hidden; margin:14px 0}
+#progress>div{height:100%; width:0; background:linear-gradient(90deg,var(--primary),var(--secondary));}
+.badge{display:inline-block; padding:6px 10px; border-radius:999px; background:var(--accent); color:#111; font-size:12px}
+hr{border:0; height:1px; background:linear-gradient(90deg,transparent,#0002,transparent); margin:22px 0}
+.qr-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px}
+.qr-card{border:1px dashed #ccc; border-radius:14px; padding:14px; text-align:center}
+.qr{width:180px; height:180px; margin:0 auto}
