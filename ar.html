@@ -28,7 +28,8 @@
     const textColor = ar.colors?.text || '#FF69B4';
     const shape1 = ar.colors?.shape1 || '#FFD166';
     const shape2 = ar.colors?.shape2 || '#9b5de5';
-    const msg = (ar.text||'Happy Birthday, <NAME>!').replace('<NAME>', name);
+    const msg = (ar.text||'Happy Birthday,
+                 <NAME>!').replace('<NAME>', name);
 
     const marker = document.createElement('a-marker');
     if(ar.useHiro !== false){ marker.setAttribute('preset','hiro'); }
